@@ -71,14 +71,20 @@ addModalForm.addEventListener('submit', e => {
       Email: addModalForm.Email.value,
       Title: addModalForm.Title.value,
       Article: addModalForm.Article.value,
-    });
-    db.collection('UserArticles').add({
-      FirstName: addModalForm.FirstName.value,
-      LastName: addModalForm.LastName.value,
-      Email: addModalForm.Email.value,
-      Title: addModalForm.Title.value,
-      Article: addModalForm.Article.value,
-    });
+    })
+    .then (() => {
+      db.collection('UserArticles').add({
+        FirstName: addModalForm.FirstName.value,
+        LastName: addModalForm.LastName.value,
+        Email: addModalForm.Email.value,
+        Title: addModalForm.Title.value,
+        Article: addModalForm.Article.value,
+      })
+      .then (()=> {
+        alert("Thank You For Your Article!")
+      })
+    })
+
   } else {
     alert("Article must be at least 2500 characters long.")
   }
