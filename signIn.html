@@ -140,7 +140,6 @@
 
             // Hide content by default. 
             secretContent.style.display = 'none';
-            signInContainer.style.display = 'block';
     
 
 
@@ -177,8 +176,9 @@
                 })
             }
 
-            // Function checking the state of authentication, and so certain content is revealed/hidden. 
-            const checkAuthState = async() => {
+
+                        // Function checking the state of authentication, and so certain content is revealed/hidden. 
+                        const checkAuthState = async() => {
                 onAuthStateChanged(auth, user => {
                     if(user) {
                         signInContainer.style.display = 'none';
@@ -193,7 +193,6 @@
                     }
                 })
             }
-
             // Called the function defined above. Check the authentication state when the page is loaded.
             checkAuthState()
 
