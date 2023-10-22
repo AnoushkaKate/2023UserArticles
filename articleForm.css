@@ -34,6 +34,10 @@
 
 }
 
+#secretContent h5 {
+    text-align: center;
+}
+
 #secretContent button {
     background-color: #3B6D46;
     border: none;

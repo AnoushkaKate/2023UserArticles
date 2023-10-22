@@ -63,7 +63,7 @@ addModalForm.addEventListener('submit', e => {
 
   const articleValue = addModalForm.Article.value;
 
-  if (articleValue.length > 2500) {
+  if (articleValue.length >= 2500) {
 
     db.collection(selectedArticleType).add({
       FirstName: addModalForm.FirstName.value,

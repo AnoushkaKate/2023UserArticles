@@ -60,3 +60,8 @@ a {
 a:hover {
     color: #3B6D46;
 }
+
+
+#secretContent h5 {
+    text-align: center;
+}
