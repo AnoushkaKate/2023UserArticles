@@ -37,9 +37,6 @@ const addModalForm = document.querySelector('.add-modal .form');
 
 const btnAdd = document.querySelector('.btn-add');
 
-
-let id;
-
 let selectedArticleType = "";
 
 document.getElementById("playersArticles").addEventListener("click", function() {
