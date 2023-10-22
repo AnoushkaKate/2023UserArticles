@@ -1,0 +1,32 @@
+body {
+    background-color: #588d64a1;
+    font-family: 'Inter';
+}
+
+img {
+    height: 30px;
+    width: auto;
+    vertical-align: middle; 
+    margin-right: 10px;
+}
+
+
+button {
+    font-family: 'Inter';
+    font-size: larger;
+    width: 400px;
+    padding: 1%;
+    box-shadow: -5px 6px rgba(0, 0, 0, 1), 0 5px 6px rgba(0, 0, 0, 1);
+    gap: 10px;
+    padding: 10px 16px;
+    margin-top: 20%;
+    margin-left: 35%;
+}
+
+button:hover {
+    border: 1px solid black;
+    transition: 0.7s;
+    color: aliceblue;
+    background-color: #3b6d46e3;
+    cursor: pointer;
+}

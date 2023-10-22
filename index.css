@@ -1,0 +1,61 @@
+body {
+    background-color: #3b6d46b7;
+}
+
+h1 {
+    position: fixed;
+    margin-left: 5%;
+    font-family: 'Inter';
+    font-style: italic;
+    color: white;
+    font-size: 100px;
+    white-space: pre-line;
+    top: -15%; 
+    -webkit-text-stroke: 0.2px black; /* Create a 2px black border around the text (for WebKit browsers) */
+}
+
+.homeBtn {
+    position: fixed;
+    top: 75%; 
+    margin-left: 6%;
+}
+
+.homeBtn button{
+    width: 400px;
+    padding: 4%;
+}
+
+.container {
+    position: fixed;
+    text-align: center;
+    font-family: 'Lexend Mega';
+    width: 40%;
+    height: 80%;
+    margin-top: 3%;
+    right: 3%;
+    float: right;
+    padding: 15px;
+    background-color: #ffffffab;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}   
+
+
+
+button {
+    font-family: 'Lexend Mega';
+    width: 400px;
+    padding: 2%;
+    box-shadow: -5px 6px rgba(0, 0, 0, 1), 0 5px 6px rgba(0, 0, 0, 1);
+}
+
+button:hover {
+    border: 1px solid black;
+    transition: 0.7s;
+    color: aliceblue;
+    background-color: #3b6d46e3;
+    cursor: pointer;
+}
+

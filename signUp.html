@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+        <link rel="stylesheet" href="signUp.css">
+        <link rel="stylesheet" href="articleForm.css">
+
+    </head>
+    <body>
+        <div id="authForm">
+
+            <div class="signUpText">
+                <h1>Sign Up</h1>
+            </div>
+
+            <h4 style="text-align: left;">Email:</h4>
+            <input type="email" placeholder="e.g. janesmith@college.school.nz" id="userEmail">
+            <br>
+            <h4 style="text-align: left;">Password:</h4>
+            <h3 style="color: red;">*Must contain at least 8 characters, one capital letter, and one number.</h3>
+            <input type="password" placeholder="Password" id="userPassword">
+
+            <h4><input type="checkbox" id="checkbox">I agree to <a href="https://anoushkakate.github.io/PolicesAndGuidelines/termsAndConditions.html">Terms of Service</a> and <a href="https://anoushkakate.github.io/PolicesAndGuidelines/privacyPolicy.html">Privacy Policy</a></h4>
+
+            <div id="errorMsg" style="color: red;"></div>
+
+             <br>
+            <button id="signUpButton">Sign Up</button>
+        </div>
+
+        <div id="secretContent">
+            <button id="signOutButton">Sign Out</button>
+
+
+            <div id="form-container">
+                <div class="add-modal modal-wrapper">
+                    <div class="modal">
+                      <h2 class="sub1">Fill out this Form to have your Article Published!</h2>
+                      <h3><span style= "color: red" >*Required</span></h3>
+                      <div class="modal-body">
+                        <form class="form" autocomplete="off">
+                            <h4>First Name<span style= "color: red" >*</span></h4>
+                            <input type="text" name="FirstName" placeholder="e.g. Lucy" required > <br> 
+                            <h4>Last Name<span style= "color: red" >*</span></h4>
+                            <input type="text" name="LastName" placeholder="e.g. Paul" required > <br> 
+                          <h4>Email<span style= "color: red" >*</span></h4>
+                          <input type="email" name="Email" id="userEmailInForm" required > <br> 
+                          <h4>Article Title<span style= "color: red" >*</span> </h4>
+                          <textarea id="expanding-input-title" type="text" name="Title" rows="1" placeholder="Type here..." required ></textarea><br> <br>
+                          <h4>Article<span style= "color: red" >*</span> </h4>
+                          <textarea id="expanding-input-article" type="text" name="Article" rows="1" placeholder="Type here..." required ></textarea><br> <br>
+            
+            
+                          <h4>Submit your Article About:</h4>
+                          <div class="typebtn" style="
+                          display: flex;
+                          flex-direction: row;
+                          justify-content: center;
+                          align-items: center;
+                          margin: 5px;">
+                              <button id="playersArticles" data-type="Players" style="margin: 5px;">Players</button>
+                              <button id="leagueArticles" data-type="Leagues"  style="margin: 5px;"> Leagues</button>
+                              <button id="countryArticles" data-type="Country"  style="margin: 5px;">Country</button>
+                              <button id="transfersArticles" data-type="Transfers"  style="margin: 5px;">Transfers</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+            
+                  </div>
+            </div>
+
+        </div>
+
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
+        
+                <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-firestore.js"></script>
+        
+        <script type="module">
+            // Import firebase SDKS for email and password authentication. 
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+            import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut} from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+          
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+              apiKey: "AIzaSyC2GQhqdMkLxVmcRMhbu2MyukMhjk7_rI8",
+              authDomain: "she-shoot-she-scores.firebaseapp.com",
+              databaseURL: "https://she-shoot-she-scores-default-rtdb.asia-southeast1.firebasedatabase.app",
+              projectId: "she-shoot-she-scores",
+              storageBucket: "she-shoot-she-scores.appspot.com",
+              messagingSenderId: "709319391076",
+              appId: "1:709319391076:web:5c7825e020a7a77d2dac71",
+              measurementId: "G-4VSGK7B0K4"
+            };
+          
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const auth = getAuth(app);
+
+            // Defining variables for HTML elements needed for authentication process. 
+            const userEmail = document.querySelector("#userEmail");
+            const userPassword = document.querySelector("#userPassword");
+            const authForm = document.querySelector("#authForm");
+            const secretContent = document.querySelector("#secretContent");
+            const signUpButton = document.querySelector("#signUpButton");
+            const signOutButton = document.querySelector("#signOutButton");
+            const errorMsg = document.querySelector("#errorMsg");
+
+            const userEmailInForm = document.querySelector("#userEmailInForm")
+
+
+
+            // Initially disable the sign up button
+            document.getElementById("signUpButton").disabled = true; 
+
+            // Hide content by default. 
+            secretContent.style.display = 'none';
+    
+
+            // Fucntion to handle the user signing up
+            const userSignUp = async() => {
+
+                // Defining the extract of email and password from input fields completed by user. 
+                const signUpEmail = userEmail.value
+                const atSymbol = signUpEmail.includes('@');
+                const signUpPassword = userPassword.value
+
+                // Password requirements, specific requirements user must meet. 
+                const passwordRequirements = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+                if (atSymbol) {
+                    if (passwordRequirements.test(signUpPassword)) {
+                // Creating new user account in firebase authentication. 
+                  createUserWithEmailAndPassword(auth, signUpEmail, signUpPassword)
+                .then((userCredential)=>{
+                    const user = userCredential.user;
+                    console.log(user);
+                    alert("Youre account has been created");
+                    errorMsg.style.display = 'none';
+                })
+                .catch((error) => {
+                    const errorCode = error.code; 
+                    const errorMessage = error.message; 
+
+                    // If there is an error in which a new account is not created, the error provided by firebase displays in the console. 
+                    console.log(errorCode + errorMessage)
+                
+                // Error code provided by firebase, has a specific error message attached to it, telling the user what the requirements are. 
+                 if (errorCode === "auth/email-already-in-use") {
+                    errorMsg.textContent = "This email is currently in use. Please use a new email.";
+                   }  
+                })
+                    } else{
+                        errorMsg.textContent = "Invalid Password. Must contain at least 8 characters, one capital letter, and one number.";
+                    }
+                } else {
+                    errorMsg.textContent = "Invalid Email address. Must contain '@'";
+                }
+            }
+
+
+            // Event listeneer to enable/disable the sign in button based on if the checkbox is checked.
+            document.getElementById("checkbox").addEventListener("change", function() {
+                if(this.checked) {
+                    document.getElementById("signUpButton").disabled = false; 
+
+                }else {
+                document.getElementById("signUpButton").disabled = true; 
+
+                }
+            })
+
+            // Function checking the state of authentication, and so certain content is revealed/hidden. 
+            const checkAuthState = async() => {
+                onAuthStateChanged(auth, user => {
+                    if(user) {
+                        authForm.style.display = 'none';
+                        secretContent.style.display = 'block';
+
+                        userEmailInForm.value = user.email;
+
+
+                    }else {
+                        authForm.style.display = 'block';
+                        secretContent.style.display = 'none';
+                    }
+                })
+            }
+
+            // Called the function defined above. Check the authentication state when the page is loaded.
+            checkAuthState()
+
+            // Function for when the user signs out. 
+            const userSignOut = async() => {
+                await signOut(auth);
+            }
+
+            // Calling functions when button is clicked. Sign up, Sign in, and Sign out. 
+            signUpButton.addEventListener('click', userSignUp)
+            signOutButton.addEventListener('click', userSignOut)
+
+          </script>
+
+          <script src="index.js"></script>
+    </body>
+</html>

@@ -1,0 +1,91 @@
+body {
+    background-color: #588d64a1;
+    font-family: 'Inter';
+
+}
+
+
+
+.signInContainer {
+    position: fixed;
+    font-family: 'Lexend Mega';
+    border-radius: 10px;
+    width: 70%;
+    height: 80%;
+    background-color: #3B6D46;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 13%;
+    margin-top: 4%;
+    font-family: 'Inter';
+}
+
+#authForm {
+    background-color: white;
+    width: 350px;
+    border-radius: 10px;
+    margin-top: 3%;
+    padding: 3%;
+    float: right;
+    right: 19%;
+    position: fixed;
+}
+
+.instructionContainer {
+    color: white;
+    background-color: #95b69ca8;
+    padding-top: 8%;
+    padding-left: 3%;
+    padding-right: 4%;
+    border-radius: 10px 0 0 10px;
+    width: 40%;
+    height: 100%;
+    font-style: italic;
+}
+
+.instructionContainer button {
+    padding-top: 40%;
+    font-family: 'Lexend Mega';
+    width: 400px;
+    padding: 2%;
+    box-shadow: -5px 6px rgba(0, 0, 0, 1), 0 5px 6px rgba(0, 0, 0, 1);
+    font-family: 'Inter';
+
+
+}
+
+.instructionContainer button:hover {
+    border: 1px solid black;
+    transition: 0.7s;
+    color: aliceblue;
+    background-color: #3b6d46e3;
+    cursor: pointer;
+}
+
+#authForm input[type="email"], input[type="password"] {
+    width: 100%; 
+    height: 35px; 
+}
+
+#authForm button {
+    padding: 1%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-left: 40%;
+    font-size: medium;
+
+}
+
+#authForm button:hover {
+    padding: 4%;
+    border: none;
+    background-color: #3b6d46e3;
+    color: white;
+    transition: 0.5s;
+    cursor: pointer;
+    margin-left: 40%;
+
+
+}

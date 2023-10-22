@@ -1,0 +1,118 @@
+.modal-wrapper {
+    background-color: white;
+    max-width: 60%;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 5%;
+    margin-left: 20%;
+}
+
+#secretContent .title {
+    margin-top: 0%;
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+#secretContent h1 {
+    margin-top: 0%;
+    font-size: 22px;
+    color: rgb(18, 34, 119);
+    text-align: center;
+}
+
+#secretContent .sub1 {
+    font-size: 25px;
+    color: rgb(0, 0, 0);
+    margin-right: 40px;
+    text-align: center;
+}
+
+#secretContent h3 {
+    text-align: center;
+    font-size: 15px;
+
+}
+
+#secretContent button {
+    background-color: #3B6D46;
+    border: none;
+    color: rgb(255, 255, 255);
+    padding: 2%;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition: 0.3s;
+    width:12%;
+    margin-left: 44%;
+    border-radius: 16px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+  }
+  
+#secretContent button:hover {
+    background-color: #8b8b8b;
+    color: white;
+}
+
+#secretContent h4 {
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+#secretContent input[type="text"] {
+    box-sizing: border-box;
+    padding: 9px 10px;
+    box-align: center;
+    margin-left: 40%;
+}
+
+#secretContent select {
+    width: 100%;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+  }
+
+
+  #secretContent #expanding-input-title {
+    font-family: 'Courier New', Courier, monospace;
+    margin-left: 10%;
+    width: 80%;
+    resize: none; 
+    overflow: hidden;
+    height: auto; 
+    min-height: 40px; 
+  }
+  
+  #secretContent  #expanding-input-article {
+    font-family: 'Courier New', Courier, monospace;
+    margin-left: 10%;
+    width: 80%;
+    resize: none; 
+    overflow: hidden; 
+    height: auto; 
+    min-height: 40px; 
+  }
+  
+
+
+  #secretContent input[type="email"] {
+    width: 40%; 
+    height: 35px; 
+    font-family: 'Inter';
+    box-sizing: border-box;
+    padding: 9px 10px;
+    box-align: center;
+    margin-left: 30%;
+
+}
+
+#secretContent #signOutButton {
+    position: fixed;
+    float: right;
+    right: 2%;
+    padding: 1%;
+    margin-top: -4%;
+
+}
