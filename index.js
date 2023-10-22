@@ -60,19 +60,28 @@ selectedArticleType = this.getAttribute("data-type");
 
 addModalForm.addEventListener('submit', e => {
   e.preventDefault();
-  db.collection(selectedArticleType).add({
-    FirstName: addModalForm.FirstName.value,
-    LastName: addModalForm.LastName.value,
-    Email: addModalForm.Email.value,
-    Title: addModalForm.Title.value,
-    Article: addModalForm.Article.value,
-  });
-  db.collection('UserArticles').add({
-    FirstName: addModalForm.FirstName.value,
-    LastName: addModalForm.LastName.value,
-    Email: addModalForm.Email.value,
-    Title: addModalForm.Title.value,
-    Article: addModalForm.Article.value,
-  });
+
+  const articleValue = addModalForm.Article.value;
+
+  if (articleValue.length > 2500) {
+
+    db.collection(selectedArticleType).add({
+      FirstName: addModalForm.FirstName.value,
+      LastName: addModalForm.LastName.value,
+      Email: addModalForm.Email.value,
+      Title: addModalForm.Title.value,
+      Article: addModalForm.Article.value,
+    });
+    db.collection('UserArticles').add({
+      FirstName: addModalForm.FirstName.value,
+      LastName: addModalForm.LastName.value,
+      Email: addModalForm.Email.value,
+      Title: addModalForm.Title.value,
+      Article: addModalForm.Article.value,
+    });
+  } else {
+    alert("Article must be at least 2500 characters long.")
+  }
+
 });
 
