@@ -1,3 +1,4 @@
+
 body {
     background-color: #588d64a1;
     font-family: 'Inter';
@@ -10,7 +11,8 @@ img {
     margin-right: 10px;
 }
 
- button {
+
+button {
     font-family: 'Inter';
     font-size: larger;
     width: 400px;
@@ -20,8 +22,8 @@ img {
     padding: 10px 16px;
     margin-top: 20%;
     margin-left: 35%;
+}
 
- }
 button:hover {
     border: 1px solid black;
     transition: 0.7s;
