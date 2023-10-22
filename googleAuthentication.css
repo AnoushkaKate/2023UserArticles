@@ -11,7 +11,7 @@ img {
 }
 
 
-#signInButton button {
+.signInButton button {
     font-family: 'Inter';
     font-size: larger;
     width: 400px;
@@ -22,8 +22,7 @@ img {
     margin-top: 20%;
     margin-left: 35%;
 }
-
-#signInButton button:hover {
+.signInButton button:hover {
     border: 1px solid black;
     transition: 0.7s;
     color: aliceblue;
